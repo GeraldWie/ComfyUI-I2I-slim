@@ -1,0 +1,517 @@
+{
+  "id": "caa59700-afb7-4d5b-b9f7-e8bbce0dc045",
+  "revision": 0,
+  "last_node_id": 31,
+  "last_link_id": 79,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "MaskToImage",
+      "pos": [
+        2391.206298828125,
+        1951.2822265625
+      ],
+      "size": [
+        184.5833282470703,
+        26
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "MaskToImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "Reroute",
+      "pos": [
+        2802.7607421875,
+        1805.26123046875
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            50,
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": "on",
+        "horizontal": false
+      }
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        1797.4764404296875,
+        1888.7503662109375
+      ],
+      "size": [
+        494.3363037109375,
+        472.7241516113281
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "gw_CombineAndPaste",
+      "pos": [
+        3714.799560546875,
+        2021.0294189453125
+      ],
+      "size": [
+        280.33331298828125,
+        254
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "decoded_vae",
+          "type": "IMAGE",
+          "link": 79
+        },
+        {
+          "name": "Original_Image",
+          "type": "IMAGE",
+          "link": 76
+        },
+        {
+          "name": "Cut_Image",
+          "type": "IMAGE",
+          "link": 55
+        },
+        {
+          "name": "Cut_Mask",
+          "type": "IMAGE",
+          "link": 56
+        },
+        {
+          "name": "region",
+          "type": "IMAGE",
+          "link": 57
+        },
+        {
+          "name": "mask_mapping_optional",
+          "shape": 7,
+          "type": "MASK_MAPPING",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FinalOut",
+          "type": "IMAGE",
+          "links": [
+            77
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "gw_CombineAndPaste"
+      },
+      "widgets_values": [
+        1,
+        "multiply_alpha",
+        "yes",
+        "no",
+        "resize"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "PreviewImage",
+      "pos": [
+        4096.462890625,
+        2024.9454345703125
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 77
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 11,
+      "type": "Separate Mask Components",
+      "pos": [
+        2617.11962890625,
+        1927.463134765625
+      ],
+      "size": [
+        266.53033447265625,
+        51.32400131225586
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "IMAGE",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask",
+          "type": "IMAGE",
+          "links": [
+            51
+          ]
+        },
+        {
+          "name": "mask_mappings",
+          "type": "MASK_MAPPING",
+          "links": [
+            52,
+            67
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "masquerade-nodes-comfyui",
+        "ver": "432cb4d146a391b387a0cd25ace824328b5b61cf",
+        "Node name for S&R": "Separate Mask Components"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 23,
+      "type": "gw_InpaintSegments",
+      "pos": [
+        3097.0712890625,
+        2013.333984375
+      ],
+      "size": [
+        287,
+        314
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 50
+        },
+        {
+          "name": "mask",
+          "type": "IMAGE",
+          "link": 51
+        },
+        {
+          "name": "mask_mapping_optional",
+          "shape": 7,
+          "type": "MASK_MAPPING",
+          "link": 52
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cut image",
+          "type": "IMAGE",
+          "links": [
+            55,
+            78
+          ]
+        },
+        {
+          "name": "cut mask",
+          "type": "IMAGE",
+          "links": [
+            56
+          ]
+        },
+        {
+          "name": "region",
+          "type": "IMAGE",
+          "links": [
+            57
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "gw_InpaintSegments"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        "RGB",
+        3,
+        "keep_ratio",
+        64,
+        64,
+        0,
+        0,
+        "match_ratio"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "Reroute",
+      "pos": [
+        3525.845947265625,
+        1832.58984375
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            79
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    }
+  ],
+  "links": [
+    [
+      16,
+      10,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      3,
+      1,
+      10,
+      0,
+      "MASK"
+    ],
+    [
+      24,
+      3,
+      0,
+      1,
+      0,
+      "*"
+    ],
+    [
+      50,
+      1,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      11,
+      0,
+      23,
+      1,
+      "IMAGE"
+    ],
+    [
+      52,
+      11,
+      1,
+      23,
+      2,
+      "MASK_MAPPING"
+    ],
+    [
+      55,
+      23,
+      0,
+      24,
+      2,
+      "IMAGE"
+    ],
+    [
+      56,
+      23,
+      1,
+      24,
+      3,
+      "IMAGE"
+    ],
+    [
+      57,
+      23,
+      2,
+      24,
+      4,
+      "IMAGE"
+    ],
+    [
+      67,
+      11,
+      1,
+      24,
+      5,
+      "MASK_MAPPING"
+    ],
+    [
+      76,
+      1,
+      0,
+      24,
+      1,
+      "IMAGE"
+    ],
+    [
+      77,
+      24,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      78,
+      23,
+      0,
+      31,
+      0,
+      "*"
+    ],
+    [
+      79,
+      31,
+      0,
+      24,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Change image here",
+      "bounding": [
+        3452.845947265625,
+        1785.9898681640625,
+        257,
+        85.60000610351562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        -1103.725971439934,
+        -1176.0778235656521
+      ]
+    },
+    "frontendVersion": "1.18.1"
+  },
+  "version": 0.4
+}
