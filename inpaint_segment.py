@@ -5,7 +5,7 @@ from .utils import tensor2mask, tensor2rgba, tensor2rgb, CutByMask
 
 VERY_BIG_SIZE = 1024 * 1024
 
-class MaskToRegion:
+class MaskToRegion2:
     def __init__(self):
         pass
 
@@ -136,3 +136,4 @@ class MaskToRegion:
         Cut_Mask = CutByMask(mask, region, force_resize_width, force_resize_height, mask_mapping_optional = None)
 
         return (Cut_Image, Cut_Mask, region, )
+

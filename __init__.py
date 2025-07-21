@@ -1,12 +1,12 @@
-from .inpaint_segment import MaskToRegion
-from .combine_and_paste import Combine_And_Paste_Op
+from .inpaint_segment import MaskToRegion2
+from .combine_and_paste import CombineAndPasteOp
 
 NODE_CLASS_MAPPINGS = {
-    "Inpaint Segments": MaskToRegion,
-    "Combine and Paste": Combine_And_Paste_Op,
+    "gw_InpaintSegments": MaskToRegion2,
+    "gw_CombineAndPaste": CombineAndPasteOp,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "Inpaint Segments": "Cut (Inpaint Segments)",
-    "Combine and Paste": "Paste (Combine and Paste)",
+    "gw_InpaintSegments": "Cut (Inpaint Segments)",
+    "gw_CombineAndPaste": "Paste (Combine and Paste)",
 }

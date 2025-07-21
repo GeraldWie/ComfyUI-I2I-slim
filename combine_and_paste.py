@@ -1,7 +1,7 @@
 import torch
 from .utils import tensor2rgba, tensor2mask, combine, apply_color_correction, PasteByMask
 
-class Combine_And_Paste_Op:
+class CombineAndPasteOp:
     def __init__(self):
         pass
 
