@@ -1,0 +1,498 @@
+{
+  "id": "caa59700-afb7-4d5b-b9f7-e8bbce0dc045",
+  "revision": 0,
+  "last_node_id": 39,
+  "last_link_id": 101,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Reroute",
+      "pos": [
+        2610.374755859375,
+        1877.8603515625
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            82,
+            87
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": "on",
+        "horizontal": false
+      }
+    },
+    {
+      "id": 32,
+      "type": "Mask Ops Slim",
+      "pos": [
+        2439.855224609375,
+        2000.5718994140625
+      ],
+      "size": [
+        270,
+        362
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 80
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask_image",
+          "type": "IMAGE",
+          "links": [
+            83
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "mask mapping",
+          "type": "MASK_MAPPING",
+          "links": [
+            84,
+            91
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Mask Ops Slim"
+      },
+      "widgets_values": [
+        "",
+        1,
+        30,
+        0,
+        0,
+        0,
+        127.5,
+        255,
+        "red",
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        1699.466064453125,
+        1902.0599365234375
+      ],
+      "size": [
+        494.3363037109375,
+        472.7241516113281
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            24,
+            80
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            81
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-138295.png [input]",
+        "image"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "Inpaint Segments Slim",
+      "pos": [
+        2836.257568359375,
+        2000.6727294921875
+      ],
+      "size": [
+        287,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 82
+        },
+        {
+          "name": "mask",
+          "type": "IMAGE",
+          "link": 83
+        },
+        {
+          "name": "mask_mapping_optional",
+          "shape": 7,
+          "type": "MASK_MAPPING",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cut image",
+          "type": "IMAGE",
+          "links": [
+            88,
+            99
+          ]
+        },
+        {
+          "name": "cut mask",
+          "type": "IMAGE",
+          "links": [
+            89
+          ]
+        },
+        {
+          "name": "region",
+          "type": "IMAGE",
+          "links": [
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Inpaint Segments Slim"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "RGB",
+        3,
+        "keep_ratio",
+        64,
+        64,
+        0,
+        0,
+        "match_ratio"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "Reroute",
+      "pos": [
+        3225.845703125,
+        1740.7716064453125
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 99
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 34,
+      "type": "Combine and Paste Slim",
+      "pos": [
+        3396.581787109375,
+        1963.91015625
+      ],
+      "size": [
+        280.33331298828125,
+        254
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "decoded_vae",
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "Original_Image",
+          "type": "IMAGE",
+          "link": 87
+        },
+        {
+          "name": "Cut_Image",
+          "type": "IMAGE",
+          "link": 88
+        },
+        {
+          "name": "Cut_Mask",
+          "type": "IMAGE",
+          "link": 89
+        },
+        {
+          "name": "region",
+          "type": "IMAGE",
+          "link": 90
+        },
+        {
+          "name": "mask_mapping_optional",
+          "shape": 7,
+          "type": "MASK_MAPPING",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FinalOut",
+          "type": "IMAGE",
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Combine and Paste Slim"
+      },
+      "widgets_values": [
+        1,
+        "multiply_alpha",
+        "yes",
+        "no",
+        "resize"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "PreviewImage",
+      "pos": [
+        3804.037353515625,
+        1970.38330078125
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      24,
+      3,
+      0,
+      1,
+      0,
+      "*"
+    ],
+    [
+      80,
+      3,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      81,
+      3,
+      1,
+      32,
+      1,
+      "MASK"
+    ],
+    [
+      82,
+      1,
+      0,
+      33,
+      0,
+      "IMAGE"
+    ],
+    [
+      83,
+      32,
+      0,
+      33,
+      1,
+      "IMAGE"
+    ],
+    [
+      84,
+      32,
+      2,
+      33,
+      2,
+      "MASK_MAPPING"
+    ],
+    [
+      87,
+      1,
+      0,
+      34,
+      1,
+      "IMAGE"
+    ],
+    [
+      88,
+      33,
+      0,
+      34,
+      2,
+      "IMAGE"
+    ],
+    [
+      89,
+      33,
+      1,
+      34,
+      3,
+      "IMAGE"
+    ],
+    [
+      90,
+      33,
+      2,
+      34,
+      4,
+      "IMAGE"
+    ],
+    [
+      91,
+      32,
+      2,
+      34,
+      5,
+      "MASK_MAPPING"
+    ],
+    [
+      99,
+      33,
+      0,
+      31,
+      0,
+      "*"
+    ],
+    [
+      100,
+      31,
+      0,
+      34,
+      0,
+      "IMAGE"
+    ],
+    [
+      101,
+      34,
+      0,
+      39,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Change image here",
+      "bounding": [
+        3152.845703125,
+        1694.171630859375,
+        257,
+        85.60000610351562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        -1627.3373095628965,
+        -1425.3832820546254
+      ]
+    },
+    "frontendVersion": "1.18.1"
+  },
+  "version": 0.4
+}

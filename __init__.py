@@ -1,12 +1,12 @@
-from .inpaint_segment import MaskToRegion2
-from .combine_and_paste import CombineAndPasteOp
+"""
+@author: GeraldWie
+@title: ComfyI2I-lite
+"""
 
-NODE_CLASS_MAPPINGS = {
-    "gw_InpaintSegments": MaskToRegion2,
-    "gw_CombineAndPaste": CombineAndPasteOp,
-}
+import folder_paths
+import os
+import sys
 
-NODE_DISPLAY_NAME_MAPPINGS = {
-    "gw_InpaintSegments": "Cut (Inpaint Segments)",
-    "gw_CombineAndPaste": "Paste (Combine and Paste)",
-}
+from .ComfyI2I_slim import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+
+__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']

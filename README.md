@@ -10,18 +10,19 @@ This slimmed-down version **removes the ComfyShop feature** and includes only th
 
 Segments and crops your image and mask based on the bounding boxes of each mask region. Each segment is then resized to 1024×1024 (or a custom size you define).
 
-
+---
 
 ## 📌 Paste – Combine and Paste
 
 Takes generated images (e.g. from the VAE Decode node), resizes them to match the original mask regions, and pastes them back into the original image at the correct location.
 
+---
 
 ## 🧩 Segment – Mask Ops
 
 Performs various operations on a mask, which can be created from an image or a text prompt. Includes options like blur, invert, levels adjustment, and region separation.
 
-
+---
 
 ## 🎨 Color Transfer
 
